@@ -1,0 +1,47 @@
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 32px;
+  background-color: white;
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  font-weight: bold;
+  font-size: 20px;
+  color: #3db5de;
+  gap: 10px;
+}
+
+.logo .circle {
+  width: 24px;
+  height: 24px;
+  border: 4px solid #3db5de;
+  border-radius: 50%;
+}
+
+.nav-links button {
+  margin-left: 10px;
+  padding: 8px 12px;
+  border: none;
+  background-color: #f0f0f0;
+  color: #333;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.nav-links button:hover {
+  background-color: #e0e0e0;
+}
+
+.nav-links .register {
+  background-color: #3db5de;
+  color: white;
+}
+
+.nav-links .register:hover {
+  background-color: #269fc9;
+}

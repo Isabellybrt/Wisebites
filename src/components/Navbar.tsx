@@ -1,5 +1,6 @@
 import React from 'react';
-import './Navbar.css';
+import { Link } from 'react-router-dom';
+import '../styles/Navbar.css';
 
 const Navbar: React.FC = () => {
   return (
@@ -9,12 +10,14 @@ const Navbar: React.FC = () => {
         <span>WiseBites</span>
       </div>
       <div className="nav-links">
-        <button>Início</button>
+        <Link to="/"><button>Início</button></Link>
         <button>Características</button>
         <button>Sobre</button>
         <button>Contato</button>
         <button>Entrar</button>
-        <button className="register">Registrar</button>
+        <Link to="/registrar">
+          <button className="register">Registrar</button>
+        </Link>
       </div>
     </nav>
   );

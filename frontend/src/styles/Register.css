@@ -2,7 +2,7 @@ body, html {
   margin: 0;
   padding: 0;
   height: 100%;
-  overflow: hidden; /* ← isso remove a rolagem */
+  overflow-x: hidden; 
   font-family: Arial, sans-serif;
 }
 
@@ -10,9 +10,9 @@ body, html {
   display: flex;
   justify-content: center;
   align-items: flex-start;
-  padding-top: 60px; 
+  padding-top: 60px;
   background-color: #f4f4f4;
-  height: 100vh;
+  min-height: 100vh;
   padding: 20px;
 }
 
@@ -36,24 +36,41 @@ body, html {
   color: #555;
 }
 
+.register-form form {
+  display: flex;
+  flex-direction: column;
+}
+
 .register-form input,
-.register-form select {
+.register-form select,
+.register-form textarea {
   width: 100%;
   padding: 10px;
   margin-bottom: 16px;
   border-radius: 5px;
   border: 1px solid #ccc;
+  font-size: 14px;
+  resize: vertical; 
+}
+
+.register-form input:focus,
+.register-form select:focus,
+.register-form textarea:focus {
+  border-color: #3db5de;
+  outline: none;
 }
 
 .register-form button {
   width: 100%;
-  padding: 10px;
+  padding: 12px;
   background-color: #3db5de;
   color: white;
   border: none;
   border-radius: 6px;
   font-weight: bold;
+  font-size: 16px;
   cursor: pointer;
+  transition: background-color 0.3s;
 }
 
 .register-form button:hover {
@@ -68,4 +85,15 @@ body, html {
 .login-link a {
   color: #3db5de;
   text-decoration: none;
+}
+
+.login-link a:hover {
+  text-decoration: underline;
+}
+
+.register-form input::placeholder,
+.register-form textarea::placeholder {
+  color: #999;         
+  font-family: Arial, sans-serif;
+  font-size: 14px;
 }

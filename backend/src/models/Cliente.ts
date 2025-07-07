@@ -11,7 +11,7 @@ Cliente.init({
     references: { model: Usuario, key: 'id_usuario' },
   },
   idade: { type: DataTypes.INTEGER },
-  pesoAtual: { type: DataTypes.FLOAT },
+  peso_atual: { type: DataTypes.FLOAT },
   altura: { type: DataTypes.FLOAT },
   restricoes: { type: DataTypes.TEXT },
   objetivo: { type: DataTypes.TEXT },

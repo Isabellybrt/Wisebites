@@ -14,7 +14,7 @@ export const register = async (req: Request, res: Response): Promise<void> => {
       telefone,
       especialidade,
       idade,
-      pesoAtual,
+      peso_atual,
       altura,
       restricoes,
       objetivo
@@ -47,13 +47,12 @@ export const register = async (req: Request, res: Response): Promise<void> => {
       await Cliente.create({
         id_cliente: newUser.id_usuario,
         idade,
-        pesoAtual,
+        peso_atual,
         altura,
         restricoes,
         objetivo
       });
     }
-
 
     res.status(201).json({ message: 'Usuário cadastrado com sucesso' });
   } catch (error) {

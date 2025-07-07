@@ -2,7 +2,7 @@ body, html {
   margin: 0;
   padding: 0;
   height: 100%;
-  overflow-x: hidden; 
+  overflow-x: hidden;
   font-family: Arial, sans-serif;
 }
 
@@ -50,7 +50,10 @@ body, html {
   border-radius: 5px;
   border: 1px solid #ccc;
   font-size: 14px;
-  resize: vertical; 
+  resize: vertical;
+  font-family: Arial, sans-serif;
+  box-sizing: border-box;
+  transition: border-color 0.3s;
 }
 
 .register-form input:focus,
@@ -93,7 +96,44 @@ body, html {
 
 .register-form input::placeholder,
 .register-form textarea::placeholder {
-  color: #999;         
+  color: #999;
   font-family: Arial, sans-serif;
   font-size: 14px;
+}
+
+.register-form textarea {
+  font-family: Arial, sans-serif;
+}
+
+/* Estilo para inputs com unidades (anos, kg, cm) */
+.input-with-unit {
+  position: relative;
+  width: 100%;
+  margin-bottom: 5px;
+}
+
+.input-with-unit input {
+  width: 100%;
+  padding: 10px 30px 10px 10px; /* padding à direita para a unidade */
+  font-size: 14px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-family: Arial, sans-serif;
+  box-sizing: border-box;
+  transition: border-color 0.3s;
+}
+
+.input-with-unit input:focus {
+  border-color: #3db5de;
+  outline: none;
+}
+
+.input-with-unit .unit {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  color: #888;
+  font-size: 12.5px;
+  pointer-events: none;
 }

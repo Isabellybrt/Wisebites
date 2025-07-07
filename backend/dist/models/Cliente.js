@@ -14,7 +14,7 @@ Cliente.init({
         references: { model: Usuario_1.Usuario, key: 'id_usuario' },
     },
     idade: { type: sequelize_1.DataTypes.INTEGER },
-    pesoAtual: { type: sequelize_1.DataTypes.FLOAT },
+    peso_atual: { type: sequelize_1.DataTypes.FLOAT },
     altura: { type: sequelize_1.DataTypes.FLOAT },
     restricoes: { type: sequelize_1.DataTypes.TEXT },
     objetivo: { type: sequelize_1.DataTypes.TEXT },

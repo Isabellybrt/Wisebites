@@ -10,7 +10,7 @@ const Cliente_1 = require("../models/Cliente");
 const bcrypt_1 = __importDefault(require("bcrypt"));
 const register = async (req, res) => {
     try {
-        const { nome, email, senha, tipo_usuario, telefone, especialidade, idade, pesoAtual, altura, restricoes, objetivo } = req.body;
+        const { nome, email, senha, tipo_usuario, telefone, especialidade, idade, peso_atual, altura, restricoes, objetivo } = req.body;
         const existingUser = await Usuario_1.Usuario.findOne({ where: { email } });
         if (existingUser) {
             res.status(400).json({ message: 'Email já cadastrado' });
@@ -34,7 +34,7 @@ const register = async (req, res) => {
             await Cliente_1.Cliente.create({
                 id_cliente: newUser.id_usuario,
                 idade,
-                pesoAtual,
+                peso_atual,
                 altura,
                 restricoes,
                 objetivo

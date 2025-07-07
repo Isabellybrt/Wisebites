@@ -5,7 +5,7 @@ import '../styles/Register.css';
 const Register: React.FC = () => {
   const [form, setForm] = useState({
     nome: '', email: '', senha: '', tipo_usuario: '',
-    telefone: '', especialidade: '', idade: '', pesoAtual: '', altura: '', restricoes: '', objetivo: ''
+    telefone: '', especialidade: '', idade: '', peso_atual: '', altura: '', restricoes: '', objetivo: ''
   });
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
@@ -47,9 +47,39 @@ const Register: React.FC = () => {
 
           {form.tipo_usuario === 'cliente' && (
             <>
-              <input name="idade" type="number" placeholder="Idade" onChange={handleChange} required />
-              <input name="pesoAtual" type="number" placeholder="Peso Atual (kg)" onChange={handleChange} required />
-              <input name="altura" type="number" placeholder="Altura (cm)" onChange={handleChange} required />
+              <div className="input-with-unit">
+                <input
+                  name="idade"
+                  type="number"
+                  placeholder="Idade"
+                  onChange={handleChange}
+                  required
+                />
+                <span className="unit">anos</span>
+              </div>
+
+              <div className="input-with-unit">
+                <input
+                  name="peso_atual"
+                  type="number"
+                  placeholder="Peso Atual"
+                  onChange={handleChange}
+                  required
+                />
+                <span className="unit">kg</span>
+              </div>
+
+              <div className="input-with-unit">
+                <input
+                  name="altura"
+                  type="number"
+                  placeholder="Altura"
+                  onChange={handleChange}
+                  required
+                />
+                <span className="unit">cm</span>
+              </div>
+
               <textarea name="restricoes" placeholder="Restrições alimentares" onChange={handleChange}></textarea>
               <textarea name="objetivo" placeholder="Objetivo" onChange={handleChange}></textarea>
             </>

@@ -7,8 +7,6 @@ exports.sequelize = void 0;
 const sequelize_1 = require("sequelize");
 const dotenv_1 = __importDefault(require("dotenv"));
 dotenv_1.default.config();
-console.log("📦 DB_PASS =", process.env.DB_PASS);
-console.log("📦 Tipo DB_PASS =", typeof process.env.DB_PASS);
 if (typeof process.env.DB_PASS !== 'string') {
     throw new Error('❌ ERRO: DB_PASS não foi carregado corretamente do .env');
 }

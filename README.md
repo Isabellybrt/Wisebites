@@ -13,20 +13,19 @@ Este projeto foi desenvolvido como trabalho final da disciplina de Engenharia de
 - [Outras tecnologias podem ser adicionadas conforme o projeto evoluir]
 
 ## 🤝 Como Contribuir
-#### Passo 1: Verifique se você possui o Node.js instalado
+#### Verifique se você possui o Node.js instalado
 ```bash
 node -v
 ```
 Caso não tenha, instale pelo site oficial: https://nodejs.org
 
-#### Passo 2: Instale as dependências
-```bash
-npm install
-```
-
 ### Acesse a pasta da aplicação
 ```bash
 cd minha-aplicacao
+```
+#### Instale as dependências
+```bash
+npm install
 ```
 
 ### Inicie o servidor de desenvolvimento

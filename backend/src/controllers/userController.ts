@@ -60,3 +60,31 @@ export const register = async (req: Request, res: Response): Promise<void> => {
     res.status(500).json({ message: 'Erro interno' });
   }
 };
+
+export const login = async (req: Request, res: Response): Promise<void> => {
+  try {
+    const { email, senha } = req.body;
+
+    const user = await Usuario.findOne({ where: { email } });
+
+    if (!user) {
+      res.status(401).json({ message: 'Usuário não encontrado' });
+      return;
+    }
+
+    const senhaCorreta = await bcrypt.compare(senha, user.senha);
+    if (!senhaCorreta) {
+      res.status(401).json({ message: 'Senha incorreta' });
+      return;
+    }
+
+    res.status(200).json({
+      message: 'Login bem-sucedido',
+      tipo_usuario: user.tipo_usuario
+    });
+
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: 'Erro interno ao fazer login' });
+  }
+};

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom'; 
 import axios from 'axios';
 import '../styles/Register.css';
 
@@ -7,6 +8,8 @@ const Register: React.FC = () => {
     nome: '', email: '', senha: '', tipo_usuario: '',
     telefone: '', especialidade: '', idade: '', peso_atual: '', altura: '', restricoes: '', objetivo: ''
   });
+
+  const navigate = useNavigate(); 
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -17,11 +20,17 @@ const Register: React.FC = () => {
     try {
       await axios.post('http://localhost:5000/api/register', form);
       alert('Usuário cadastrado com sucesso!');
+
+      if (form.tipo_usuario === 'nutricionista') {
+        navigate('/Nutri');
+      } else if (form.tipo_usuario === 'cliente') {
+        navigate('/cliente');
+      }
+
     } catch (err: any) {
       console.error(err.response?.data || err.message);
       alert('Erro ao cadastrar: ' + (err.response?.data?.message || err.message));
     }
-
   };
 
   return (
@@ -34,7 +43,7 @@ const Register: React.FC = () => {
           <input name="email" type="email" placeholder="Email" onChange={handleChange} required />
           <input name="senha" type="password" placeholder="Senha" onChange={handleChange} required />
           <input name="telefone" placeholder="Telefone" onChange={handleChange} />
-          
+
           <select name="tipo_usuario" onChange={handleChange} required>
             <option value="">Selecione o tipo</option>
             <option value="nutricionista">Nutricionista</option>

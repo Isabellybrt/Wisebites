@@ -14,7 +14,9 @@ const Navbar: React.FC = () => {
         <button>Características</button>
         <button>Sobre</button>
         <button>Contato</button>
-        <button>Entrar</button>
+        <Link to="/login">
+          <button>Entrar</button>
+        </Link>
         <Link to="/registrar">
           <button className="register">Registrar</button>
         </Link>

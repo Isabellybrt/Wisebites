@@ -19,9 +19,9 @@ node -v
 ```
 Caso não tenha, instale pelo site oficial: https://nodejs.org
 
-### Acesse a pasta da aplicação
+### Acesse a pasta da aplicação (frontend)
 ```bash
-cd minha-aplicacao
+cd frontend
 ```
 #### Instale as dependências
 ```bash
@@ -33,4 +33,31 @@ npm install
 npm start 
 ```
 
+### Acesse a pasta da aplicação (backend)
+```bash
+cd backend
+```
 
+#### Crie um arquivo .env
+```bash
+DB_NAME=seu_db
+DB_USER=seu_user
+DB_PASS=sua_senha
+DB_HOST=localhost
+PORT=5000
+```
+
+#### Instale as dependências
+```bash
+npm install
+```
+
+#### Compile o projeto
+```bash
+npx tsc
+```
+
+#### Inicie o servidor backend
+```bash
+node dist/server.js
+```

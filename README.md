@@ -44,7 +44,8 @@ DB_NAME=seu_db
 DB_USER=seu_user
 DB_PASS=sua_senha
 DB_HOST=localhost
-PORT=5000```
+PORT=5000
+```
 
 #### Instale as dependências
 ```bash

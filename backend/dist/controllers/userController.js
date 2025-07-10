@@ -3,7 +3,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.register = void 0;
+exports.login = exports.register = void 0;
 const Usuario_1 = require("../models/Usuario");
 const Nutricionista_1 = require("../models/Nutricionista");
 const Cliente_1 = require("../models/Cliente");
@@ -48,3 +48,27 @@ const register = async (req, res) => {
     }
 };
 exports.register = register;
+const login = async (req, res) => {
+    try {
+        const { email, senha } = req.body;
+        const user = await Usuario_1.Usuario.findOne({ where: { email } });
+        if (!user) {
+            res.status(401).json({ message: 'Usuário não encontrado' });
+            return;
+        }
+        const senhaCorreta = await bcrypt_1.default.compare(senha, user.senha);
+        if (!senhaCorreta) {
+            res.status(401).json({ message: 'Senha incorreta' });
+            return;
+        }
+        res.status(200).json({
+            message: 'Login bem-sucedido',
+            tipo_usuario: user.tipo_usuario
+        });
+    }
+    catch (error) {
+        console.error(error);
+        res.status(500).json({ message: 'Erro interno ao fazer login' });
+    }
+};
+exports.login = login;

@@ -1,0 +1,51 @@
+.summary-card {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 0;
+}
+
+.summary-card .icon {
+  width: 42px;
+  height: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  background-color: #eef6fc; /* fundo azul claro */
+  color: #3db5de;            /* azul principal */
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.summary-card .text-group {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.summary-card .label {
+  font-size: 14px;
+  color: #666;
+  font-weight: 500;
+  margin: 0;
+}
+
+.summary-card .value {
+  font-size: 22px;
+  font-weight: 700;
+  color: #222;
+  margin: 0;
+}
+
+.material-symbols-outlined {
+  font-size: 20px;
+  margin-right: 8px;
+  vertical-align: middle;
+}
+
+.material-symbols-outlined {
+  font-size: 20px;
+  margin-right: 8px;
+  vertical-align: middle;
+}

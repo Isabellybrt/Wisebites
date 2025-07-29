@@ -1,5 +1,5 @@
 import React from 'react';
-import Sidebar from '../components/Sidebar_Nutritionist';
+import Sidebar from '../components/Sidebar_Client';
 import '../styles/Nutritional_Plan_Client.css';
 
 const Nutritional_Plan_Client: React.FC = () => {

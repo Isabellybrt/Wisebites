@@ -10,7 +10,7 @@ const Sidebar_Client: React.FC = () => {
         <nav>
           <ul>
             <li>
-              <Link to="/home" className="sidebar-link">
+              <Link to="/home_client" className="sidebar-link">
                 <span className="material-symbols-outlined">home</span>
                 Dashboard
               </Link>

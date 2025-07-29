@@ -7,6 +7,7 @@ import Home_Nutritionist from './pages/Home_Nutritionist';
 import Home_Client from './pages/Home_Client';
 import Login from './pages/Login';
 import Plan_Registration from './pages/Plan_Registration';
+import Nutritional_Plan_Client from './pages/Nutritional_Plan_Client';
 
 const App: React.FC = () => {
   return (
@@ -35,7 +36,8 @@ const Layout: React.FC = () => {
         <Route path="/dashboard" element={<Home_Nutritionist />} />
         <Route path="/home" element={<Home_Client />} />
         <Route path="/login" element={<Login />} />
-        <Route path='/Plan_Registration' element={<Plan_Registration />} />
+        <Route path='/plan_Registration' element={<Plan_Registration />} />
+        <Route path='/nutritional_plan_client' element={<Nutritional_Plan_Client />} />
         {/* outras rotas no futuro */}
       </Routes>
     </>

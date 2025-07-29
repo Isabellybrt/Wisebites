@@ -2,7 +2,8 @@ import React from 'react';
 import '../styles/Sidebar_Nutritionist.css';
 import Dashboard from '../pages/Home_Nutritionist';
 import { Link } from 'react-router-dom';
-import Plan_Registration from '../pages/Plan_Registration';
+
+
 
 const Sidebar: React.FC = () => {
   return (

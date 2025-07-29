@@ -89,3 +89,25 @@ button {
   border: none;
   cursor: pointer;
 }
+
+.sugestoes {
+  list-style: none;
+  padding: 0;
+  margin: 4px 0 12px;
+  border: 1px solid #ccc;
+  max-height: 150px;
+  overflow-y: auto;
+  background-color: white;
+  position: absolute;
+  z-index: 1;
+  width: 300px;
+}
+
+.sugestoes li {
+  padding: 8px;
+  cursor: pointer;
+}
+
+.sugestoes li:hover {
+  background-color: #f0f0f0;
+}

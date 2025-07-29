@@ -34,7 +34,7 @@ const Layout: React.FC = () => {
         <Route path="/" element={<Hero />} />
         <Route path="/registrar" element={<Register />} />
         <Route path="/dashboard" element={<Home_Nutritionist />} />
-        <Route path="/home" element={<Home_Client />} />
+        <Route path="/home_client" element={<Home_Client />} />
         <Route path="/login" element={<Login />} />
         <Route path='/plan_Registration' element={<Plan_Registration />} />
         <Route path='/nutritional_plan_client' element={<Nutritional_Plan_Client />} />

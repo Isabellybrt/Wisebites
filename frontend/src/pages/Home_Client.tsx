@@ -1,6 +1,6 @@
 import React from 'react';
 import '../styles/Home_Client.css';
-import Sidebar from '../components/Sidebar_Nutritionist';
+import Sidebar from '../components/Sidebar_Client';
 import SummaryCard from '../components/SummaryCard_Client';
 
 const Home_Client: React.FC = () => {
@@ -33,7 +33,7 @@ const Home_Client: React.FC = () => {
         <section className="meal-section">
           <div className="meal-card">
             <h4>Próxima Refeição</h4>
-            <p>⏰ 12:00 - 13:00</p>
+            <p> 12:00 - 13:00</p>
             <ul>
               <li>Arroz integral (100g)</li>
               <li>Feijão (50g)</li>
@@ -44,9 +44,9 @@ const Home_Client: React.FC = () => {
           <div className="meal-card">
             <h4>Próximas Refeições</h4>
             <ul>
-              <li>🥪 Lanche da tarde — 15:00 - 15:30</li>
-              <li>🍽 Jantar — 19:00 - 20:00</li>
-              <li>☕ Café da manhã — 07:00 - 08:00</li>
+              <li> Lanche da tarde — 15:00 - 15:30</li>
+              <li> Jantar — 19:00 - 20:00</li>
+              <li> Café da manhã — 07:00 - 08:00</li>
             </ul>
           </div>
         </section>

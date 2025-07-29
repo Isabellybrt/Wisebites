@@ -1,0 +1,91 @@
+.cadastro-container {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 30px;
+  background: #f9fcfd;
+  border-radius: 10px;
+  box-shadow: 0 0 10px #c7e2ea;
+}
+
+h2 {
+  text-align: center;
+  color: #3db5de;
+  margin-bottom: 20px;
+}
+
+form label {
+  display: block;
+  margin-bottom: 16px;
+  font-weight: 600;
+  color: #333;
+}
+
+input {
+  width: 100%;
+  padding: 10px;
+  margin-top: 6px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+h3 {
+  margin-top: 30px;
+  margin-bottom: 10px;
+  color: #222;
+}
+
+.refeicao-card {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  padding: 20px;
+  margin-bottom: 16px;
+  border-radius: 6px;
+}
+
+button {
+  padding: 10px 14px;
+  margin-top: 10px;
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.adicionar {
+  background-color: #3db5de;
+  color: white;
+}
+
+.salvar {
+  background-color: #2cbd73;
+  color: white;
+  width: 100%;
+  margin-top: 30px;
+}
+
+.refeicao-card {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  padding: 20px;
+  margin-bottom: 16px;
+  border-radius: 6px;
+  position: relative;
+}
+
+.refeicao-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+  font-weight: bold;
+}
+
+.remover {
+  background-color: #ff4d4f;
+  color: white;
+  padding: 4px 10px;
+  font-size: 0.9em;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+}

@@ -5,6 +5,8 @@ import Hero from './pages/Hero';
 import Register from './pages/Register';
 import Home_Nutritionist from './pages/Home_Nutritionist';
 import Home_Client from './pages/Home_Client';
+import Login from './pages/Login';
+import Plan_Registration from './pages/Plan_Registration';
 
 const App: React.FC = () => {
   return (
@@ -32,6 +34,8 @@ const Layout: React.FC = () => {
         <Route path="/registrar" element={<Register />} />
         <Route path="/dashboard" element={<Home_Nutritionist />} />
         <Route path="/home" element={<Home_Client />} />
+        <Route path="/login" element={<Login />} />
+        <Route path='/Plan_Registration' element={<Plan_Registration />} />
         {/* outras rotas no futuro */}
       </Routes>
     </>

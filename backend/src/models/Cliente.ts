@@ -8,7 +8,10 @@ Cliente.init({
   id_cliente: {
     type: DataTypes.INTEGER,
     primaryKey: true,
-    references: { model: Usuario, key: 'id_usuario' },
+    references: {
+      model: Usuario,
+      key: 'id_usuario'
+    }
   },
   idade: { type: DataTypes.INTEGER },
   peso_atual: { type: DataTypes.FLOAT },
@@ -20,3 +23,6 @@ Cliente.init({
   tableName: 'cliente',
   timestamps: false,
 });
+
+
+Cliente.belongsTo(Usuario, { foreignKey: 'id_cliente', as: 'usuario' });

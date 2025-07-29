@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import '../styles/Plan_Registration.css';
 import Sidebar from '../components/Sidebar_Nutritionist';
 
@@ -8,11 +8,23 @@ interface OpcaoRefeicao {
   porcoes: string;
 }
 
+interface Usuario {
+  nome: string;
+}
+
+interface Cliente {
+  id_cliente: number;
+  usuario: Usuario;
+}
+
 type TipoRefeicao = 'cafeDaManha' | 'almoco' | 'lancheTarde' | 'jantar' | 'ceia';
 
 const Plan_Registration: React.FC = () => {
-   const [plano, setPlano] = useState({
-    cliente: '',
+  const [clientesFiltrados, setClientesFiltrados] = useState<Cliente[]>([]);
+  const [clienteNomeBusca, setClienteNomeBusca] = useState('');
+  const [idSelecionado, setIdSelecionado] = useState<number | null>(null);
+
+  const [plano, setPlano] = useState({
     dataCriacao: new Date().toISOString().split('T')[0],
     refeicoes: {
       cafeDaManha: [{ horario: '', descricao: '', porcoes: '' }],
@@ -22,6 +34,38 @@ const Plan_Registration: React.FC = () => {
       ceia: [{ horario: '', descricao: '', porcoes: '' }],
     } as Record<TipoRefeicao, OpcaoRefeicao[]>,
   });
+
+  useEffect(() => {
+    const buscarClientes = async () => {
+      if (clienteNomeBusca.length < 2) {
+        setClientesFiltrados([]);
+        return;
+      }
+
+      try {
+        const response = await fetch(
+          `http://localhost:5000/api/buscar-clientes?nome=${clienteNomeBusca}`
+        );
+        const data = await response.json();
+        if (Array.isArray(data)) {
+          setClientesFiltrados(data);
+        } else {
+          setClientesFiltrados([]);
+        }
+      } catch (error) {
+        console.error('Erro ao buscar clientes:', error);
+        setClientesFiltrados([]);
+      }
+    };
+
+    buscarClientes();
+  }, [clienteNomeBusca]);
+
+  const selecionarCliente = (cliente: Cliente) => {
+    setClienteNomeBusca(cliente.usuario.nome);
+    setIdSelecionado(cliente.id_cliente);
+    setClientesFiltrados([]);
+  };
 
   const handleChange = (
     tipo: TipoRefeicao,
@@ -52,7 +96,7 @@ const Plan_Registration: React.FC = () => {
 
   const removerOpcao = (tipo: TipoRefeicao, index: number) => {
     const novasOpcoes = [...plano.refeicoes[tipo]];
-    if (novasOpcoes.length === 1) return; // Evita remover a última
+    if (novasOpcoes.length === 1) return;
     novasOpcoes.splice(index, 1);
     setPlano({
       ...plano,
@@ -63,10 +107,37 @@ const Plan_Registration: React.FC = () => {
     });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log('Plano preenchido:', plano);
-    alert('Plano preenchido no console!');
+
+    if (idSelecionado === null || isNaN(Number(idSelecionado))) {
+      alert('Selecione um paciente válido.');
+      return;
+    }
+
+    const payload = {
+      id_cliente: Number(idSelecionado),
+      dataCriacao: plano.dataCriacao,
+      refeicoes: plano.refeicoes,
+    };
+
+    try {
+      const response = await fetch('http://localhost:5000/api/plano-nutricional', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+      });
+
+      if (response.ok) {
+        alert('Plano salvo com sucesso!');
+        // Opcional: limpar formulário ou resetar estado aqui
+      } else {
+        alert('Erro ao salvar plano.');
+      }
+    } catch (error) {
+      console.error(error);
+      alert('Erro ao conectar com o servidor.');
+    }
   };
 
   const labels: Record<TipoRefeicao, string> = {
@@ -86,11 +157,24 @@ const Plan_Registration: React.FC = () => {
           Paciente:
           <input
             type="text"
-            value={plano.cliente}
-            onChange={(e) => setPlano({ ...plano, cliente: e.target.value })}
-            placeholder="Nome do paciente"
+            value={clienteNomeBusca}
+            onChange={(e) => {
+              setClienteNomeBusca(e.target.value);
+              setIdSelecionado(null);
+            }}
+            placeholder="Digite o nome do paciente"
             required
+            autoComplete="off"
           />
+          {Array.isArray(clientesFiltrados) && clientesFiltrados.length > 0 && (
+            <ul className="sugestoes">
+              {clientesFiltrados.map((cliente) => (
+                <li key={cliente.id_cliente} onClick={() => selecionarCliente(cliente)}>
+                  {cliente.usuario.nome}
+                </li>
+              ))}
+            </ul>
+          )}
         </label>
 
         <label>
@@ -122,9 +206,7 @@ const Plan_Registration: React.FC = () => {
                     <input
                       type="time"
                       value={opcao.horario}
-                      onChange={(e) =>
-                        handleChange(refeicao, index, 'horario', e.target.value)
-                      }
+                      onChange={(e) => handleChange(refeicao, index, 'horario', e.target.value)}
                     />
                   </label>
                   <label>
@@ -133,9 +215,7 @@ const Plan_Registration: React.FC = () => {
                       type="text"
                       placeholder="Ex: Pão com ovo e frutas"
                       value={opcao.descricao}
-                      onChange={(e) =>
-                        handleChange(refeicao, index, 'descricao', e.target.value)
-                      }
+                      onChange={(e) => handleChange(refeicao, index, 'descricao', e.target.value)}
                     />
                   </label>
                   <label>
@@ -144,9 +224,7 @@ const Plan_Registration: React.FC = () => {
                       type="text"
                       placeholder="Ex: 1 fatia, 2 colheres"
                       value={opcao.porcoes}
-                      onChange={(e) =>
-                        handleChange(refeicao, index, 'porcoes', e.target.value)
-                      }
+                      onChange={(e) => handleChange(refeicao, index, 'porcoes', e.target.value)}
                     />
                   </label>
                 </div>
@@ -171,3 +249,4 @@ const Plan_Registration: React.FC = () => {
 };
 
 export default Plan_Registration;
+  

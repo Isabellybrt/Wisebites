@@ -21,6 +21,12 @@ const Sidebar_Client: React.FC = () => {
                 Plano Alimentar
               </Link>
             </li>
+            <li>
+              <Link to="/meal_register" className="sidebar-link">
+                <span className="material-symbols-outlined">checkbook</span>
+                Registrar Refeição
+              </Link>
+            </li>
           </ul>
         </nav>
       </div>

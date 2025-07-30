@@ -10,15 +10,11 @@ export const register = async (req: Request, res: Response): Promise<void> => {
       nome,
       email,
       senha,
-      tipo_usuario,
       telefone,
-      especialidade,
-      idade,
-      peso_atual,
-      altura,
-      restricoes,
-      objetivo
+      especialidade
     } = req.body;
+
+    const tipo_usuario = 'nutricionista';
 
     const existingUser = await Usuario.findOne({ where: { email } });
     if (existingUser) {
@@ -36,30 +32,18 @@ export const register = async (req: Request, res: Response): Promise<void> => {
       telefone
     });
 
-    if (tipo_usuario === 'nutricionista') {
-      await Nutricionista.create({
-        id_nutricionista: newUser.id_usuario,
-        especialidade
-      });
-    }
+    await Nutricionista.create({
+      id_nutricionista: newUser.id_usuario,
+      especialidade
+    });
 
-    if (tipo_usuario === 'cliente') {
-      await Cliente.create({
-        id_cliente: newUser.id_usuario,
-        idade,
-        peso_atual,
-        altura,
-        restricoes,
-        objetivo
-      });
-    }
-
-    res.status(201).json({ message: 'Usuário cadastrado com sucesso' });
+    res.status(201).json({ message: 'Nutricionista cadastrado com sucesso' });
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: 'Erro interno' });
   }
 };
+
 
 export const login = async (req: Request, res: Response): Promise<void> => {
   try {

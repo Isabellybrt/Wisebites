@@ -6,11 +6,11 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.login = exports.register = void 0;
 const Usuario_1 = require("../models/Usuario");
 const Nutricionista_1 = require("../models/Nutricionista");
-const Cliente_1 = require("../models/Cliente");
 const bcrypt_1 = __importDefault(require("bcrypt"));
 const register = async (req, res) => {
     try {
-        const { nome, email, senha, tipo_usuario, telefone, especialidade, idade, peso_atual, altura, restricoes, objetivo } = req.body;
+        const { nome, email, senha, telefone, especialidade } = req.body;
+        const tipo_usuario = 'nutricionista';
         const existingUser = await Usuario_1.Usuario.findOne({ where: { email } });
         if (existingUser) {
             res.status(400).json({ message: 'Email já cadastrado' });
@@ -24,23 +24,11 @@ const register = async (req, res) => {
             tipo_usuario,
             telefone
         });
-        if (tipo_usuario === 'nutricionista') {
-            await Nutricionista_1.Nutricionista.create({
-                id_nutricionista: newUser.id_usuario,
-                especialidade
-            });
-        }
-        if (tipo_usuario === 'cliente') {
-            await Cliente_1.Cliente.create({
-                id_cliente: newUser.id_usuario,
-                idade,
-                peso_atual,
-                altura,
-                restricoes,
-                objetivo
-            });
-        }
-        res.status(201).json({ message: 'Usuário cadastrado com sucesso' });
+        await Nutricionista_1.Nutricionista.create({
+            id_nutricionista: newUser.id_usuario,
+            especialidade
+        });
+        res.status(201).json({ message: 'Nutricionista cadastrado com sucesso' });
     }
     catch (error) {
         console.error(error);

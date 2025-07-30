@@ -1,14 +1,26 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Refeicao = void 0;
-class Refeicao {
-    constructor(horario, descricao, porcoes, id_planoNutricional, id_refeicao) {
-        this.horario = horario;
-        this.descricao = descricao;
-        this.porcoes = porcoes;
-        this.id_planoNutricional = id_planoNutricional;
-        if (id_refeicao)
-            this.id_refeicao = id_refeicao;
-    }
+exports.RefeicaoModel = void 0;
+const sequelize_1 = require("sequelize");
+const database_1 = require("../config/database");
+class RefeicaoModel extends sequelize_1.Model {
 }
-exports.Refeicao = Refeicao;
+exports.RefeicaoModel = RefeicaoModel;
+RefeicaoModel.init({
+    id_refeicao: {
+        type: sequelize_1.DataTypes.INTEGER,
+        autoIncrement: true,
+        primaryKey: true,
+    },
+    horario: sequelize_1.DataTypes.STRING,
+    descricao: sequelize_1.DataTypes.STRING,
+    porcoes: sequelize_1.DataTypes.STRING,
+    id_planoNutricional: {
+        type: sequelize_1.DataTypes.INTEGER,
+        allowNull: false,
+    },
+}, {
+    sequelize: database_1.sequelize,
+    tableName: 'refeicao',
+    timestamps: false,
+});

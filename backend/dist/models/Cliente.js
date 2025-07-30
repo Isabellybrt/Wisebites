@@ -11,7 +11,10 @@ Cliente.init({
     id_cliente: {
         type: sequelize_1.DataTypes.INTEGER,
         primaryKey: true,
-        references: { model: Usuario_1.Usuario, key: 'id_usuario' },
+        references: {
+            model: Usuario_1.Usuario,
+            key: 'id_usuario'
+        }
     },
     idade: { type: sequelize_1.DataTypes.INTEGER },
     peso_atual: { type: sequelize_1.DataTypes.FLOAT },
@@ -23,3 +26,4 @@ Cliente.init({
     tableName: 'cliente',
     timestamps: false,
 });
+Cliente.belongsTo(Usuario_1.Usuario, { foreignKey: 'id_cliente', as: 'usuario' });

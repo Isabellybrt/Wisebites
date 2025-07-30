@@ -4,7 +4,7 @@ import Logo from '../assets/logo-wisebites.jpg';
   
 const Hero: React.FC = () => {
   return (
-    <section className="hero">
+    <section className="hero"id='hero'>
       <div className="hero-text">
         <h1>
           Transforme sua <br />

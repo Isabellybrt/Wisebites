@@ -1,6 +1,5 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
-import Navbar from './components/Navbar';
 import LandingPage from './pages/LandingPage';
 import Register from './pages/Register';
 import Home_Nutritionist from './pages/Home_Nutritionist';
@@ -8,10 +7,8 @@ import Home_Client from './pages/Home_Client';
 import Login from './pages/Login';
 import Plan_Registration from './pages/Plan_Registration';
 import Nutritional_Plan_Client from './pages/Nutritional_Plan_Client';
-import Hero from './components/Hero';
-import About from './components/About';
-import Features from './components/Features';
-import Contact from './components/Contact';
+import Client_List from './pages/Client_List';
+import RegisterClient from './pages/Register_Client';
 
 const App: React.FC = () => {
   return (
@@ -35,6 +32,8 @@ const Layout: React.FC = () => {
         <Route path="/login" element={<Login />} />
         <Route path='/plan_Registration' element={<Plan_Registration />} />
         <Route path='/nutritional_plan_client' element={<Nutritional_Plan_Client />} />
+        <Route path='/client_List' element={<Client_List />} />
+        <Route path='/register_client' element={<RegisterClient />} />
       </Routes>
     </>
   );

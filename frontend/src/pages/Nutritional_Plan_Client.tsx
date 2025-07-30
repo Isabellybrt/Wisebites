@@ -71,10 +71,11 @@ const Nutritional_Plan_Client: React.FC = () => {
         {plano.refeicoes.map((refeicao, i) => (
           <div key={i} className="refeicao-bloco">
             <h2>
-            {refeicao.tipo}{" "}
-            <span className="material-symbols-outlined" style={{ verticalAlign: "middle", marginLeft: "6px", fontSize: "1.5rem" }}>
+              {refeicao.tipo}
+              <span className="material-symbols-outlined" style={{ verticalAlign: "middle", marginLeft: "6px", fontSize: "1.5rem" }}>
                 restaurant_menu
-            </span></h2>
+              </span>
+            </h2>
             {refeicao.opcoes.map((opcao, j) => {
               const itens = opcao.descricao.split(',').map(item => item.trim());
               const porcoes = opcao.porcoes.split(',').map(p => p.trim());
@@ -85,18 +86,13 @@ const Nutritional_Plan_Client: React.FC = () => {
                   <h4>Opção {j + 1}</h4>
                   <p><strong>Horário:</strong> {opcao.horario}</p>
 
+                  <p className="tag-label"><strong>Itens – Porções:</strong></p>
                   <div className="descricao-porcoes-tabela">
-                    <strong>Itens e Porções:</strong>
-                    <table>
-                      <tbody>
-                        {Array.from({ length: qtd }).map((_, idx) => (
-                          <tr key={idx}>
-                            <td className="item">{itens[idx]}</td>
-                            <td className="porcao">{porcoes[idx]}</td>
-                          </tr>
-                        ))}
-                      </tbody>
-                    </table>
+                    {Array.from({ length: qtd }).map((_, idx) => (
+                      <span key={idx} className="tag">
+                        {itens[idx]} – {porcoes[idx]}
+                      </span>
+                    ))}
                   </div>
                 </div>
               );

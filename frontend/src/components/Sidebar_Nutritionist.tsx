@@ -1,9 +1,6 @@
 import React from 'react';
 import '../styles/Sidebar_Nutritionist.css';
-import Dashboard from '../pages/Home_Nutritionist';
 import { Link } from 'react-router-dom';
-
-
 
 const Sidebar: React.FC = () => {
   return (
@@ -19,15 +16,15 @@ const Sidebar: React.FC = () => {
               </Link>
             </li>
             <li>
-              <Link to="/">
+              <Link to="/client_list">
                 <span className="material-symbols-outlined">group</span>
                 Pacientes
               </Link>
             </li>
             <li>
-              <Link to="/">
-                <span className="material-symbols-outlined">restaurant</span>
-                Planos Alimentares
+              <Link to="/register_client">
+                <span className="material-symbols-outlined">people</span>
+                Cadastrar cliente
               </Link>
             </li>
             <li>

@@ -1,0 +1,139 @@
+.meal-register-container {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start; /* mudou de center para flex-start */
+  padding: 4rem 2rem 2rem 10rem; /* mais espaço em cima */
+  background-color: #f5f5f5;
+  font-family: 'Inter', sans-serif;
+  position: relative;
+}
+
+.card {
+  background-color: #fff;
+  border-radius: 12px;
+  padding: 2.5rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  width: 100%;
+  max-width: 70%; /* aumentamos a largura do card */
+  margin-top: 0rem; /* card mais para cima */
+}
+
+.title {
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 2rem;
+  text-align: left; /* alinhado à esquerda */
+  color: #1a1a1a;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+  gap: 3.5rem;
+  margin-bottom: 1.8rem;
+  align-items: flex-end; /* força o alinhamento inferior */
+}
+
+
+.field {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.field label {
+  font-weight: 600;
+  margin-bottom: 0.4rem;
+  font-size: 15px;
+  color: #333;
+}
+
+.field input,
+.field select,
+.field textarea {
+  padding: 0.75rem 1rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-family: inherit;
+  background-color: #fff;
+}
+
+.field textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.alimento-field {
+  margin-bottom: 1.5rem;
+}
+
+.alimento-input {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.alimento-input input {
+  flex: 1;
+}
+
+.add-button {
+  padding: 0.65rem 1.1rem;
+  background-color: #00aaff;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.add-button:hover {
+  background-color: #008ecc;
+}
+
+.alimentos-list {
+  margin-top: 0.5rem;
+  padding-left: 1.2rem;
+  list-style-type: disc;
+  font-size: 0.95rem;
+  color: #333;
+}
+
+.submit-button {
+  width: 100%;
+  margin-top: 2rem;
+  padding: 0.9rem;
+  background-color: #00aaff;
+  color: white;
+  font-size: 1.05rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.submit-button:hover {
+  background-color: #008ecc;
+}
+
+.wide-field input,
+.wide-field select {
+  width: 100%;
+}
+
+.image-preview {
+  margin-top: 12px;
+  width: 100%;
+  max-width: 300px;
+  border-radius: 8px;
+  object-fit: cover;
+  border: 1px solid #ddd;
+}
+
+.imagem-field {
+  margin-top: 1.8rem;
+}

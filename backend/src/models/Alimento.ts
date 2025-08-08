@@ -1,11 +1,35 @@
-export class Alimento {
-  id_alimento?: number;
-  nome: string;
-  calorias: number;
+import { Model, DataTypes } from 'sequelize';
+import sequelize from '../config/database';
 
-  constructor(nome: string, calorias: number, id_alimento?: number) {
-    this.nome = nome;
-    this.calorias = calorias;
-    if (id_alimento) this.id_alimento = id_alimento;
-  }
+class Alimento extends Model {
+  public id_alimento!: number;
+  public nome!: string;
+  public calorias?: number;
+  public readonly createdAt!: Date;
+  public readonly updatedAt!: Date;
 }
+
+Alimento.init(
+  {
+    id_alimento: {
+      type: DataTypes.INTEGER,
+      autoIncrement: true,
+      primaryKey: true,
+    },
+    nome: {
+      type: DataTypes.STRING(80),
+      allowNull: false,
+    },
+    calorias: {
+      type: DataTypes.INTEGER,
+      allowNull: true,
+    },
+  },
+  {
+    sequelize,
+    tableName: 'Alimento',
+    timestamps: true,
+  }
+);
+
+export default Alimento;

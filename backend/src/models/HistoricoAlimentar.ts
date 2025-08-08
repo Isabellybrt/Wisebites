@@ -2,19 +2,16 @@ import { Model, DataTypes } from 'sequelize';
 import sequelize from '../config/database';
 import Cliente from './Cliente';
 
-class PlanoNutricional extends Model {
-  public id_planoNutricional!: number;
+class HistoricoAlimentar extends Model {
+  public id_historicoAlimentar!: number;
   public id_cliente!: number;
-  public nome?: string;
-  public descricao?: string;
-  public dataCriacao?: Date;
   public readonly createdAt!: Date;
   public readonly updatedAt!: Date;
 }
 
-PlanoNutricional.init(
+HistoricoAlimentar.init(
   {
-    id_planoNutricional: {
+    id_historicoAlimentar: {
       type: DataTypes.INTEGER,
       autoIncrement: true,
       primaryKey: true,
@@ -28,30 +25,18 @@ PlanoNutricional.init(
         key: 'id_cliente',
       },
     },
-    nome: {
-      type: DataTypes.STRING,
-      allowNull: true,
-    },
-    descricao: {
-      type: DataTypes.TEXT,
-      allowNull: true,
-    },
-    dataCriacao: {
-      type: DataTypes.DATEONLY,
-      allowNull: true,
-    },
   },
   {
     sequelize,
-    tableName: 'PlanoNutricional',
+    tableName: 'HistoricoAlimentar',
     timestamps: true,
   }
 );
 
 // Relacionamento com Cliente
-PlanoNutricional.belongsTo(Cliente, {
+HistoricoAlimentar.belongsTo(Cliente, {
   foreignKey: 'id_cliente',
   as: 'cliente',
 });
 
-export default PlanoNutricional;
+export default HistoricoAlimentar;

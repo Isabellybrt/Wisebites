@@ -2,19 +2,18 @@ import { Model, DataTypes } from 'sequelize';
 import sequelize from '../config/database';
 import Cliente from './Cliente';
 
-class PlanoNutricional extends Model {
-  public id_planoNutricional!: number;
+class CaloriaEstimativa extends Model {
+  public id_caloriaEstimativa!: number;
   public id_cliente!: number;
-  public nome?: string;
-  public descricao?: string;
-  public dataCriacao?: Date;
+  public imagem?: Buffer;
+  public caloriasEstimadas?: number;
   public readonly createdAt!: Date;
   public readonly updatedAt!: Date;
 }
 
-PlanoNutricional.init(
+CaloriaEstimativa.init(
   {
-    id_planoNutricional: {
+    id_caloriaEstimativa: {
       type: DataTypes.INTEGER,
       autoIncrement: true,
       primaryKey: true,
@@ -22,36 +21,31 @@ PlanoNutricional.init(
     id_cliente: {
       type: DataTypes.INTEGER,
       allowNull: false,
-      unique: true,
       references: {
         model: 'Cliente',
         key: 'id_cliente',
       },
     },
-    nome: {
-      type: DataTypes.STRING,
+    imagem: {
+      type: DataTypes.BLOB,
       allowNull: true,
     },
-    descricao: {
-      type: DataTypes.TEXT,
-      allowNull: true,
-    },
-    dataCriacao: {
-      type: DataTypes.DATEONLY,
+    caloriasEstimadas: {
+      type: DataTypes.FLOAT,
       allowNull: true,
     },
   },
   {
     sequelize,
-    tableName: 'PlanoNutricional',
+    tableName: 'CaloriaEstimativa',
     timestamps: true,
   }
 );
 
 // Relacionamento com Cliente
-PlanoNutricional.belongsTo(Cliente, {
+CaloriaEstimativa.belongsTo(Cliente, {
   foreignKey: 'id_cliente',
   as: 'cliente',
 });
 
-export default PlanoNutricional;
+export default CaloriaEstimativa;

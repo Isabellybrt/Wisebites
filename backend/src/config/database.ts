@@ -3,17 +3,20 @@ import dotenv from 'dotenv';
 
 dotenv.config();
 
-if (typeof process.env.DB_PASS !== 'string') {
-  throw new Error('❌ ERRO: DB_PASS não foi carregado corretamente do .env');
-}
-
-export const sequelize = new Sequelize(
-  process.env.DB_NAME || '',
-  process.env.DB_USER || '',
-  `${process.env.DB_PASS || ''}`, // força string
-  {
-    host: process.env.DB_HOST || 'localhost',
-    dialect: 'postgres',
-    logging: false,
+const sequelize = new Sequelize({
+  dialect: 'postgres',
+  host: process.env.DB_HOST || 'localhost',
+  port: parseInt(process.env.DB_PORT || '5432'),
+  database: process.env.DB_NAME || 'wisebites',
+  username: process.env.DB_USER || 'postgres',
+  password: process.env.DB_PASSWORD || '',
+  logging: process.env.NODE_ENV === 'development' ? console.log : false,
+  pool: {
+    max: 5,
+    min: 0,
+    acquire: 30000,
+    idle: 10000
   }
-);
+});
+
+export default sequelize;

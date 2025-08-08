@@ -2,19 +2,18 @@ import { Model, DataTypes } from 'sequelize';
 import sequelize from '../config/database';
 import Cliente from './Cliente';
 
-class PlanoNutricional extends Model {
-  public id_planoNutricional!: number;
+class PesoRegistro extends Model {
+  public id_pesoRegistro!: number;
   public id_cliente!: number;
-  public nome?: string;
-  public descricao?: string;
-  public dataCriacao?: Date;
+  public dataHora?: Date;
+  public peso!: number;
   public readonly createdAt!: Date;
   public readonly updatedAt!: Date;
 }
 
-PlanoNutricional.init(
+PesoRegistro.init(
   {
-    id_planoNutricional: {
+    id_pesoRegistro: {
       type: DataTypes.INTEGER,
       autoIncrement: true,
       primaryKey: true,
@@ -22,36 +21,31 @@ PlanoNutricional.init(
     id_cliente: {
       type: DataTypes.INTEGER,
       allowNull: false,
-      unique: true,
       references: {
         model: 'Cliente',
         key: 'id_cliente',
       },
     },
-    nome: {
-      type: DataTypes.STRING,
+    dataHora: {
+      type: DataTypes.DATE,
       allowNull: true,
     },
-    descricao: {
-      type: DataTypes.TEXT,
-      allowNull: true,
-    },
-    dataCriacao: {
-      type: DataTypes.DATEONLY,
-      allowNull: true,
+    peso: {
+      type: DataTypes.FLOAT,
+      allowNull: false,
     },
   },
   {
     sequelize,
-    tableName: 'PlanoNutricional',
+    tableName: 'PesoRegistro',
     timestamps: true,
   }
 );
 
 // Relacionamento com Cliente
-PlanoNutricional.belongsTo(Cliente, {
+PesoRegistro.belongsTo(Cliente, {
   foreignKey: 'id_cliente',
   as: 'cliente',
 });
 
-export default PlanoNutricional;
+export default PesoRegistro;
